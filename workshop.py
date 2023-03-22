@@ -8,11 +8,15 @@ import keys
 WORKSHOP = "steamapps/workshop/content/107410/"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36"  # noqa: E501
 
+def env_defined(key):
+    return key in os.environ and len(os.environ[key]) > 0
 
 def download(mods):
     steamcmd = ["/steamcmd/steamcmd.sh"]
     steamcmd.extend(["+force_install_dir", "/arma3"])
     steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
+    if env_defined("STEAM_GUARD_CODE"):
+        steamcmd.extend(["+set_steam_guard_code", os.environ["STEAM_GUARD_CODE"]])
     for id in mods:
         steamcmd.extend(["+workshop_download_item", "107410", id])
     steamcmd.extend(["+quit"])
