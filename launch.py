@@ -28,10 +28,11 @@ if os.environ["SKIP_INSTALL"] in ["", "false"]:
 
     steamcmd = ["/steamcmd/steamcmd.sh"]
     steamcmd.extend(["+force_install_dir", "/arma3"])
-    steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
-    steamcmd.extend(["+app_update", "233780"])
     if env_defined("STEAM_GUARD_CODE"):
-        steamcmd.extend(["+set_steam_guard_code", os.environ["STEAM_GUARD_CODE"]])
+        steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"], os.environ["STEAM_GUARD_CODE"]])
+    else:        
+        steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
+    steamcmd.extend(["+app_update", "233780"])
     if env_defined("STEAM_BRANCH"):
         steamcmd.extend(["-beta", os.environ["STEAM_BRANCH"]])
     if env_defined("STEAM_BRANCH_PASSWORD"):

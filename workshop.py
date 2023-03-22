@@ -16,7 +16,9 @@ def download(mods):
     steamcmd.extend(["+force_install_dir", "/arma3"])
     steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
     if env_defined("STEAM_GUARD_CODE"):
-        steamcmd.extend(["+set_steam_guard_code", os.environ["STEAM_GUARD_CODE"]])
+        steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"], os.environ["STEAM_GUARD_CODE"]])
+    else:        
+        steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
     for id in mods:
         steamcmd.extend(["+workshop_download_item", "107410", id])
     steamcmd.extend(["+quit"])
