@@ -26,22 +26,6 @@ RUN apt-get update \
     && \
     wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf - -C /steamcmd
 
-ENV ARMA_BINARY=./arma3server
-ENV ARMA_CONFIG=main.cfg
-ENV ARMA_PARAMS=
-ENV ARMA_PROFILE=main
-ENV ARMA_WORLD=empty
-ENV ARMA_LIMITFPS=1000
-ENV ARMA_CDLC=
-ENV HEADLESS_CLIENTS=0
-ENV HEADLESS_CLIENTS_PROFILE="\$profile-hc-\$i"
-ENV PORT=2302
-ENV STEAM_BRANCH=public
-ENV STEAM_BRANCH_PASSWORD=
-ENV MODS_LOCAL=true
-ENV MODS_PRESET=
-ENV SKIP_INSTALL=false
-
 EXPOSE 2302/udp
 EXPOSE 2303/udp
 EXPOSE 2304/udp
