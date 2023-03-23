@@ -22,7 +22,7 @@ def download(mods):
     for id in mods:
         steamcmd.extend(["+workshop_download_item", "107410", id])
     steamcmd.extend(["+quit"])
-    subprocess.call(steamcmd)
+    os.system(steamcmd)
 
 
 def preset(mod_file):
