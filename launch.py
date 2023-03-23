@@ -38,7 +38,7 @@ if os.environ["SKIP_INSTALL"] in ["", "false"]:
     if env_defined("STEAM_BRANCH_PASSWORD"):
         steamcmd.extend(["-betapassword", os.environ["STEAM_BRANCH_PASSWORD"]])
     steamcmd.extend(["validate", "+quit"])
-    subprocess.call(steamcmd)
+    os.system(steamcmd)
 
 # Mods
 
